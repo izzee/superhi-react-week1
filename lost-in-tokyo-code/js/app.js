@@ -31,17 +31,22 @@ const Nav = () => (
   </nav>
 )
 
-const Attraction = ({ title, description, image, className }) => (
-  <div className={`ph4 ph5-ns ph0-l mb4 mb5-ns w-100 overflow-hidden pointer attraction ${className}`}>
-    <div className="relative">
-      <div className="absolute w-100 h-100 flex items-center pa3 pa4-ns bg-aqua overlay">
-        <h1 className="f4 f3-ns mt0 mb2 regular black normal lh-title">{title}</h1>
-        <p className="lh-title lh-copy-ns mv0 black f6 measure-l">{description}</p>
+class Attraction extends React.Component {
+  render() {
+    const { title, description, image, className } = this.props;
+    return(
+      <div className={`ph4 ph5-ns ph0-l mb4 mb5-ns w-100 overflow-hidden pointer attraction ${className}`}>
+        <div className="relative">
+          <div className="absolute w-100 h-100 flex items-center pa3 pa4-ns bg-aqua overlay">
+            <h1 className="f4 f3-ns mt0 mb2 regular black normal lh-title">{title}</h1>
+            <p className="lh-title lh-copy-ns mv0 black f6 measure-l">{description}</p>
+          </div>
+          <img src={`../images/${image}`} />
+        </div>
       </div>
-      <img src={`../images/${image}`} />
-    </div>
-  </div>
-);
+    )
+  }
+}
 
 const App = () => (
   <div>
