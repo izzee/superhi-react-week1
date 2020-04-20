@@ -68,5 +68,12 @@ const attractions = [
     link: 'http://www.ghibli-museum.jp/en/',
     image: 'image_9.jpg',
     className: 'w-third-l ml-auto-l'
+  },
+  {
+    title: 'Record Store',
+    description: 'Nostrud cillum aliqua tempor quis sit officia magna. Irure voluptate aute sint et ullamco deserunt occaecat.',
+    link: 'https://www.google.com',
+    image: 'image_10.jpg',
+    className: 'w-third-l ml5-l'
   }
 ];
