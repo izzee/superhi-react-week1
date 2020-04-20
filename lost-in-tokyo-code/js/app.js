@@ -31,11 +31,12 @@ const Nav = () => (
   </nav>
 )
 
-const Overlay = ({ showInfo, title, description }) => (
-  <div className="absolute w-100 h-100 flex items-center pa3 pa4-ns bg-aqua overlay" 
-  style={{ transform: showInfo ? 'none' : 'translateY(-100%)' }}
+const Overlay = ({ showInfo, title, link, description }) => (
+  <div 
+    className="absolute w-100 h-100 flex flex-column align-center pa3 pa4-ns bg-aqua overlay"
+    style={{ transform: showInfo ? 'none' : 'translateY(-100%)' }}
   >
-    <h1 className="f4 f3-ns mt0 mb2 regular black normal lh-title">{title}</h1>
+    <a href={link} className="f4 f3-ns mt0 mb2 regular black normal lh-title">{title}</a>
     <p className="lh-title lh-copy-ns mv0 black f6 measure-l">{description}</p>
   </div>
 )
@@ -48,26 +49,19 @@ class Attraction extends React.Component {
     }
 
     this.toggleInfo = this.toggleInfo.bind(this)
-    this.closeInfo = this.closeInfo.bind(this)
   }
 
-  toggleInfo() {
-    this.setState(prevState => ({showInfo: !prevState.showInfo}));
+  toggleInfo(open) {
+    this.setState({showInfo: open});
   };
-
-  closeInfo() {
-    if (this.state.showInfo ){
-      this.setState({showInfo: false})
-    }
-  }
 
   render() {
     const { image, className } = this.props;
     return(
       <div 
           className={`ph4 ph5-ns ph0-l mb4 mb5-ns w-100 overflow-hidden pointer attraction ${className}`} 
-          onClick={() => this.toggleInfo() }
-          onMouseLeave={() => this.closeInfo() }
+          onMouseEnter={() => this.toggleInfo(true) }
+          onMouseLeave={() => this.toggleInfo(false) }
       >   
         <div className="relative">
           <Overlay {...this.props} {...this.state}/>
